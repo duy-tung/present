@@ -52,8 +52,6 @@ This program has the wrong `package` declaration.
 
 * Pointer
 .image js_to_go/pass-by-value-ref.gif 400 _
-* Example
-.play -edit js_to_go/types.go
 
 * String
 .image js_to_go/string.png 350 _
