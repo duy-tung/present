@@ -1,0 +1,105 @@
+Golang 101
+
+* Agenda
+- Why is Go ?
+- Packages And Structure
+- From NodeJS to Go
+- Concurrency
+- Q & A
+
+* Why is Go ?
+
+* Why is Go ?
+- Fast compile times (_to_ _native_ _code_) and execution
+- Statically type-checked
+- Concurrency
+- Simple, no fancy, focus on productivity
+Designed by programmers for programmers!
+
+* Packages
+
+* Packages
+- Packages and imports
+- Exported names
+- Structure
+
+* Packages and imports
+
+* What should be part of package?
+- Think of packages as independent components
+- All code that is related to one entity should be in one package
+.image packages/package.png 350 _
+
+* Package Hierarchy
+- As related packages are part of one parent package, we keep the imports between packages only in the parent package
+- Avoid circular dependencies by grouping only related entities together
+.image packages/package_hierarchy.png 400 _
+
+*
+- Circular dependencies are *not* *permitted*.
+- `package`main` is the name of the package which contains the entry point to your program, `func`main`.
+
+* main packages
+
+This program has the wrong `package` declaration.
+.play -edit packages/main.go
+
+* Exported names
+- In Go, a name is exported if it begins with a capital letter
+- Foo is an exported name, as is FOO. The name foo is not exported.
+
+.play -edit exported_names/main.go
+
+* Pointer
+.image js_to_go/pass-by-value-ref.gif 400 _
+*
+.play -edit js_to_go/types.go
+
+* String
+.image js_to_go/string.png 350 _
+
+* Slices
+.image js_to_go/slice.png 400 _
+
+* Function
+* variadic function
+.play -edit js_to_go/function.go
+* slice in function
+.play -edit js_to_go/slice-in-function.go
+
+* Method - Interface - DI
+* Duck Typing
+.play -edit js_to_go/duck-typing.go
+* DI
+.image js_to_go/DI.png 350 _
+
+* Concurrency
+- Why?
+- Concept
+- Goroutine
+
+* Why?
+- Look around you. What do you see?
+- Do you see a single-stepping world doing one thing at a time?
+- Or do you see a complex world of interacting, independently behaving pieces?
+- That's why. Sequential processing on its own does not model the world's behavior.
+
+* Concept
+- Concurrency != Parallelism
+- Concurrency is about *dealing* with lots of things at once.
+.image concurrency/concurrecy.jpg 150 _
+- Parallelism is about *doing* lots of things at once.
+.image concurrency/parallelism.png 150 _
+- Not the same, but related.
+
+*
+- Concurrency is about structure, parallelism is about execution.
+- Concurrency provides a way to structure a solution to solve a problem that may (but not necessarily) be parallelizable.
+
+* Goroutine
+- A Goroutine is a lightweight thread managed by the Go runtime
+- Implemented by adding the go keyword before executing a function
+.image concurrency/example.png 350 _
+- Tells go to spin up a new thread to do that thing :
+.link https://play.golang.org/p/2BVwtos4-j
+
